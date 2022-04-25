@@ -1,0 +1,15 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.2;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract USDT is ERC20, Ownable {
+    constructor() ERC20("Tether USD", "USDT") {  
+        mint(_msgSender()); 
+    }
+
+    function mint(address to) public onlyOwner {
+        _mint(to, 100 ether);
+    }
+}
